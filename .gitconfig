@@ -1,3 +1,11 @@
+[user]
+	email = <email>
+	name = <name>
+[core]
+	autocrlf = false
+	safecrlf = false
+	color = true
+	editor = nano
 [alias]
     st = status -s
     co = checkout
