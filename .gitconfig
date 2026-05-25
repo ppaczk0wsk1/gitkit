@@ -1,0 +1,13 @@
+[alias]
+    st = status -s
+    co = checkout
+    ci = commit
+    br = branch
+    pl = pull --rebase
+    f = fetch -p
+    undo = reset HEAD~1 --mixed
+    amend = commit --amend
+    hist = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    rank = shortlog -sn --no-merges
+    finda = "!grepalias() { git config --get-regexp alias | grep -i \"$1\" | awk -v nr=2 '{sub(/^alias\\./,\"\")};{printf \"\\033[31m%10s\\033[1;37m\", $1};{sep=FS};{for (x=nr; x<=NF; x++) {printf \"%s%s\", sep, $x; }; print \"\\033[0;39m\"}'; }; grepalias"
+    ac = "!f() { msg=$(git diff --cached | ollama run phi3:mini \"Write one short conventional commit message (type: description) for this diff. Only output the message, nothing else:\"); echo \"\\nSuggested: $msg\"; read -p \"Use this? (y/n/e to edit): \" choice; case $choice in y) git commit -m \"$msg\";; e) git commit -e -m \"$msg\";; *) echo \"Aborted\";; esac; }; f"
